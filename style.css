@@ -1,0 +1,309 @@
+body {
+    font-family: 'Comfortaa';font-size: 22px;
+    background-color: #E0BBE4;
+    padding: 0;
+    margin: 0;
+}
+
+.hero {
+    padding: 8% 16%;
+}
+
+.in-container {
+    display: inline-block;
+}
+
+.in-container .hey{
+    font-size: 30px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    border-right: 5px solid;
+    width: 0%;
+    white-space: nowrap;
+    overflow: hidden;
+    animation:
+            typing 2s steps(13),
+            cursor .4s step-end infinite alternate;
+    animation-fill-mode: forwards ;
+}
+
+@keyframes cursor {
+    50% { border-color: transparent;}
+}
+
+@keyframes typing {
+    from { width: 0;}
+    to {width: 100%; border-color: transparent;}
+}
+
+.in-container .hap{
+    font-weight: 900;
+    letter-spacing: 1px;
+    border-right: 5px solid;
+    width: 0%;
+    white-space: nowrap;
+    overflow: hidden;
+    
+    animation:
+            typing 2s steps(14),
+            cursor .4s step-end infinite alternate;
+    animation-delay: 2s;
+    animation-fill-mode: forwards ;
+    color: #ffffff;
+    font-size: 110px;
+    letter-spacing: 3px;
+    margin-block-start: 60px;
+    margin-block-end: 60px;
+}
+
+.in-container .i{
+    font-weight: 900;
+    border-right: 5px solid;
+    width: 0%;
+    white-space: nowrap;
+    overflow: hidden;
+    animation:
+            typing 6s steps(63),
+            cursor .4s step-end infinite alternate;
+    animation-delay: 4s;
+    animation-fill-mode: forwards ;
+    font-size: 25px;
+}
+
+.in-container .so{
+    font-weight: 900;
+    border-right: 5px solid;
+    width: 0%;
+    white-space: nowrap;
+    overflow: hidden;
+    animation:
+            typing 3s steps(30),
+            cursor .4s step-end infinite alternate;
+    animation-delay: 10s;
+    animation-fill-mode: forwards ;
+    font-size: 25px;
+}
+
+
+.trans-p-c {
+    height: 200px;
+    background-image: linear-gradient(to bottom, rgba(224, 187, 228), rgba(254, 200, 216));
+    width: 100%;
+}
+
+.trans-l-p {
+    height: 200px;
+    background-image: linear-gradient(to bottom,rgba(255, 223, 211), rgba(224, 187, 228));
+    width: 100%;
+}
+
+.trans-p-la {
+    height: 200px;
+    background-image: linear-gradient(to bottom, rgba(224, 187, 228), rgba(254, 200, 216));
+    width: 100%;
+}
+
+.trans-c-l {
+    height: 200px;
+    background-image: linear-gradient(to bottom, rgba(254, 200, 216), rgba(255, 223, 211));
+    width: 100%;
+}
+
+.container-cotton {
+    background-color: #FEC8D8;
+    padding: 16% 16%;
+}
+
+.container-cotton p{
+    font-size: 25px;
+}
+
+.container-cotton font{
+    font-size: 120px;
+    margin-right: 10px;
+    font-weight: 900;
+    color: white;
+}
+
+.clock-holder {
+    margin: 60px 0;
+}
+
+.container-lum {
+    background-color: #FFDFD3;
+    padding: 16% 8%;
+    position: relative;
+}
+
+.bori {
+    height: 400px;
+    width: 400px;
+    margin-left: 70%;
+    
+}
+
+.container-lum video {
+    margin-top: -200px;
+}
+
+.love {
+    height: 150px;
+    width: 400px;
+    position: absolute;
+    left: 37%;
+    top: 40%;
+    transform: rotate(-20deg);
+}
+
+.container-lum p {
+    font-size: 30px;
+}
+
+.container {
+    padding: 16% 16%;
+}
+
+.container p{
+    font-size: 25px;
+}
+
+.card {
+    height: 350px;
+    width: 250px;
+    background-color: #957DAD;
+    color: white;
+    padding: 40px;
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity 0.5s;
+}
+
+.card.fade-out {
+    opacity: 0;
+}
+
+.card-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60px;
+}
+
+.card h2{
+    width: fit-content;
+    font-size: 50px;
+    display: none;
+}
+
+.card p{
+    display: none;
+}
+
+.card font {
+    margin-top: 120px;
+    display: block;
+    font-size: 80px;
+    text-align: center;
+}
+
+.card.show font{
+    display: none;
+}
+
+.card.show p, .card.show h2{
+    display: block;
+}
+
+.container-lavender {
+    background-color: #FEC8D8;
+    padding: 16%;
+}
+
+.birthday-wishes {
+    text-align: justify;
+}
+
+.cake {
+    width: 70%;
+    height: 400px;
+    margin-left: 15%;
+}
+/* Fade-In Animation */
+.fade-in {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+}
+
+/* Slide-In Animation */
+.slide-in {
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.slide-in-visible {
+    transform: translateX(0);
+    opacity: 1;
+}
+.container-lum img, .container-lum video {
+    max-width: 100%;
+    height: auto;
+    margin: 20px; /* Increased margin to separate images and videos */
+    border-radius: 10px;
+    object-fit: cover; /* Adjust image to fit */
+    transition: transform 0.3s ease;
+    position: relative; /* Added to ensure layering */
+    z-index: 2; /* Bring images/video in front */
+}
+.container-lum {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center;
+    padding: 20px;
+}
+
+.container-lum img, .container-lum video {
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0; /* Separate images and videos vertically */
+    border-radius: 10px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    background-color: #fff;
+    position: relative;
+    z-index: 1; /* Ensure card is on top */
+    text-align: center; /* Center align text */
+}
+
+.card h2, .card p {
+    margin: 0; /* Remove default margin for better spacing */
+}
+/* General styles for images and videos */
+.container-lum img, .container-lum video {
+    max-width: 100%;        /* Ensures images/videos are responsive */
+    height: auto;           /* Maintains aspect ratio */
+    max-height: 300px;     /* Set a maximum height */
+    margin: 20px 0;        /* Space between elements */
+    border-radius: 10px;   /* Rounded corners */
+    object-fit: cover;      /* Cover the area without distorting */
+}
+
+/* Cake Image */
+.cake {
+    max-width: 100%;        /* Ensure responsive width */
+    height: auto;           /* Maintain aspect ratio */
+    max-height: 200px;      /* Set a maximum height for the cake image */
+    margin: 20px;
+}

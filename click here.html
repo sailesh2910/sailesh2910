@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Selection Section</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Container for the cards */
+        .card-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* Card styling */
+        .card {
+            width: 150px;
+            height: 200px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            position: relative;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: scale(1.1); /* Grow effect on hover */
+        }
+
+        /* Disable unselected cards */
+        .disabled {
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        /* Surprise text style */
+        .surprise-text {
+            display: none; /* Hidden by default */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18px;
+            color: #333;
+        }
+
+        /* Show surprise text when the card is selected */
+        .show-surprise .surprise-text {
+            display: block;
+        }
+
+        /* Hide card content when selected */
+        .show-surprise span {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        <div class="card" onclick="selectCard(this, 1)">
+            <span>Card 1</span>
+            <div class="surprise-text">🎉 Surprise surprise ! you can have personal chef Mrs sailesh who will cook anything as of your wish !
+            </div>
+        </div>
+        <div class="card" onclick="selectCard(this, 2)">
+            <span>Card 2</span>
+            <div class="surprise-text">🎁 Surprise surprise dear your personal massager will appointed as soon as possible madam !</div>
+        </div>
+        <div class="card" onclick="selectCard(this, 3)">
+            <span>Card 3</span>
+            <div class="surprise-text">✨ Surprise surprise ! wish  anything to do for you i wont deny </div>
+        </div>
+    </div>
+
+    <script>
+        let cardSelected = false; // To track if a card is already selected
+
+        function selectCard(card, cardNumber) {
+            if (cardSelected) return; // If a card is already selected, prevent further action
+
+            cardSelected = true; // Mark that a card has been selected
+
+            // Show the surprise for the selected card
+            card.classList.add('show-surprise');
+
+            // Disable other cards
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(c => {
+                if (c !== card) {
+                    c.classList.add('disabled');
+                }
+            });
+
+            // Log which card was selected (optional)
+            console.log('Card ' + cardNumber + ' selected!');
+        }
+    </script>
+</body>
+</html>

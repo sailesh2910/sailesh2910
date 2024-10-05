@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+    <link rel="stylesheet" href="./style.css">
+    <title> Happy Birthday Nancy </title>
+    <style>
+        /* General style */
+        body {
+            font-family: 'Comfortaa', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        /* Hero section */
+        .hero {
+            text-align: center;
+            padding: 50px 0;
+            background-color: #ffe4e1;
+            animation: fadeIn 1.5s; /* Fade in effect */
+            position: relative; /* Added for positioning */
+            z-index: 1; /* Set a lower z-index for the hero */
+        }
+
+        .in-container {
+            margin: 20px;
+        }
+
+        .in-container p {
+            font-size: 24px;
+            animation: slideIn 1s; /* Slide in effect */
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        /* Image container */
+        .container-lum {
+            display: flex;
+            flex-direction: column; /* Stack images and videos vertically */
+            align-items: center;
+            padding: 20px;
+            background-color: #fff5ee;
+            position: relative; /* Added for positioning */
+        }
+
+        .container-lum img, .container-lum video {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0; /* Increased margin to separate images and videos vertically */
+            border-radius: 10px;
+            object-fit: contain; /* Adjust image to fit while maintaining aspect ratio */
+            transition: transform 0.3s ease;
+            cursor: pointer; /* Change cursor to pointer on hover */
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+        }
+
+        .modal img {
+            margin: auto;
+            display: block;
+            max-width: 80%;
+            max-height: 80%;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Countdown timer styles */
+        .container-cotton {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .clock-holder {
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        /* Audio player styles */
+        audio {
+            display: block;
+            margin: 20px auto;
+            width: 80%;
+            max-width: 400px;
+            border-radius: 10px;
+            background: #ffe4e1;
+            padding: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Birthday wishes */
+        .birthday-wishes {
+            font-size: 18px;
+            padding: 20px;
+            background-color: #fffaf0;
+            border-radius: 10px;
+            margin: 20px;
+            animation: fadeIn 1.5s; /* Fade in effect */
+        }
+
+        /* Cake Image */
+        .cake {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 20px;
+        }
+
+        /* Keyframes for animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Card styles */
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            background-color: #fff;
+            position: relative; /* Needed for z-index */
+            z-index: 1; /* Lower than images */
+            text-align: center; /* Center align text */
+        }
+
+        .card.show {
+            transform: scale(1.1); /* Scale up when selected */
+        }
+
+        /* Card text styles */
+        .card h2, .card p {
+            margin: 0; /* Remove default margin for better spacing */
+        }
+
+        .card.fade-out {
+            opacity: 0; /* Hide the card */
+            transition: opacity 0.5s ease; /* Fade out effect */
+        }
+    </style>
+</head>
+<body>
+    <section id="one">
+        <div class="hero">
+            <div class="in-container">
+                <p class="hey">Hey Nancy sweety</p>
+            </div>
+            <div class="in-container">
+                <p class="hap">HAPPY BIRTHDAY dear</p>
+            </div>
+            <div class="in-container">
+                <p class="i">I didn’t know what gift would be perfect for you, but I wanted it to be something special.</p>
+            </div>
+            <div class="in-container">
+                <p class="so">So... I made you this website.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="two">
+        <div class="container-cotton">
+            <p>It's been exactly</p>
+            <div class="clock-holder">
+                <font id="days">0</font>
+                <font>:</font>
+                <font id="hours">0</font>
+                <font>:</font>
+                <font id="minutes">0</font>
+                <font>:</font>
+                <font id="seconds">0</font>
+            </div>
+            <p>since I first met you, and every day since, you’ve made the world feel a little brighter.</p>
+        </div>
+    </section>
+
+    <section id="three">
+        <div class="container-lum">
+            <img src="nance1.jpg.png" alt="Nancy" class="bori" onclick="openModal(this)" />
+            <img src="nance2.jpg.png" alt="Nancy 2" class="l" onclick="openModal(this)" />
+            <img src="fav1.png" alt="Favorite 1" class="lr" onclick="openModal(this)" />
+            <img src="fav2.png" alt="Favorite 2" class="lr1" onclick="openModal(this)" />
+            <video width="400px" height="400px" controls="controls">
+                <source src="2.mp4" type="video/mp4" />
+                <p>Like a soft breeze, your presence lingers even when you're away</p>
+            </video>
+        </div>
+        <div class="container-lum">
+            
+        </div>
+        <p>"You have a way of being on my mind even when you’re not around. It’s like your presence leaves an imprint, and no matter what, you stay with me. The way you care, the way you laugh, the way you just *are* — it’s something I truly admire."<br/><br/> — From someone who thinks you’re pretty special</p>
+    </section>
+
+    <section id="four">
+        <div class="container">
+            <p>I picked a song just for you.<br/><br/>Play it and keep scrolling — there’s more in store for you...</p>
+            <div>
+                <video width="400px" height="250px" controls="controls">
+                    <source src="1.mp4" type="video/mp4" />
+                   
+                </video>
+                <p>Some moments are etched in the soul, and with you, every moment feels that way.</p>
+            </div>
+            <p><audio controls autoplay src="s1.mp3" type="audio/mpeg">
+            </audio></p>
+        </div>
+        <section id="link-section">
+            <div class="container-cotton">
+                <h2>Want more surprises?</h2>
+                <a href="click here.html" style="font-size: 20px; color: #333; text-decoration: none;">Click here for a surprise!</a>
+            </div>
+        </section>
+        <div class="container"> 
+            <p>Here’s another song, because one is never enough!</p>
+            <div>
+                <video width="400px" height="250px" controls="controls">
+                    <source src="3.mp4" type="video/mp4" />
+                    
+                </video>
+                <p>Every smile, every glance — they are the little treasures I hold on to</p>
+            </div>
+            
+            <p>Hope u liked my weird things.....if not also please don't mind hahaha!</p>
+        </div>
+        <style>
+            body {
+                background-color: #f0e1e1; /* Soft background color */
+                font-family: 'Pacifico', cursive; /* Elegant font */
+                color: #9b3d3d; /* Warm, loving text color */
+                text-align: center; /* Center align the text */
+                padding: 50px; /* Add some padding */
+            }
+    
+            h1 {
+                color: #c00; /* Rich red for the title */
+            }
+    
+            p {
+                font-size: 24px; /* Larger font size for the poem */
+                line-height: 1.5; /* Increase line height for readability */
+            }
+        </style>
+    </head>
+    <body>
+        <h1>To Nancy Nimmy</h1>
+        <p>
+            In the garden of life, where blossoms unfold,<br>
+            There’s a radiant flower, more precious than gold.<br>
+            With a smile like the sun, and laughter so sweet,<br>
+            Nancy Nimmy, my heart skips a beat.<br><br>
+            
+            Your kindness, a melody, soft as a breeze,<br>
+            Bringing warmth to the world, putting worries at ease.<br>
+            In moments of silence, your spirit shines bright,<br>
+            A guiding light, turning darkness to light.<br><br>
+            
+            Each memory we weave, like threads of pure gold,<br>
+            In the tapestry of time, our stories are told.<br>
+            With whispers of dreams, we chase after stars,<br>
+            In the dance of our days, no distance can part.<br><br>
+            
+            So here’s to you, dear, with love ever true,<br>
+            In the symphony of life, I’m grateful for you.<br>
+            Together we'll wander, hand in hand we will roam,<br>
+            For with you, my darling, I’ve found my true home.<br>
+        </p>
+    </body>
+
+        <div class="container">
+            <p>And last but not least, here’s a little something for our future adventures! if we met again </p>
+        
+            <p>HOPE I Havent bored you  as usual :) </p>
+        </div>
+    </section>
+    <section id="link-section">
+        <div class="container-cotton">
+            <h2>Want more surprises?</h2>
+            <a href="post.html" style="font-size: 20px; color: #333; text-decoration: none;">Click here for a surprise!</a>
+        </div>
+    </section>
+
+    <section id="five">
+        <div class="container-cotton">
+            <p>Here’s the cake I made just for you!<br/>Blow the candle and make a wish! 🎂</p>
+            <img src="panda.jpg" alt="Cake" class="cake" onclick="openModal(this)"/>
+            <p>You’re the best — and don’t ever forget that!</p>
+        </div>
+        <div class="container-cotton">
+            <p>Made with ❤ by Sailesh</p>
+        </div>
+
+    </section>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="img01">
+    </div>
+
+    <script>
+        // Countdown timer from October 6, 2023
+        const startDate = new Date('2023-10-06T00:00:00').getTime();
+
+        function updateClock() {
+            const now = new Date().getTime();
+            const timeElapsed = now - startDate;
+
+            const days = Math.floor(timeElapsed / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeElapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeElapsed % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeElapsed % (1000 * 60)) / 1000);
+
+            document.getElementById('days').innerHTML = days;
+            document.getElementById('hours').innerHTML = hours;
+            document.getElementById('minutes').innerHTML = minutes;
+            document.getElementById('seconds').innerHTML = seconds;
+        }
+
+        setInterval(updateClock, 1000);
+
+        // Card selection functionality
+        function cardSelected(card) {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(c => {
+                c.classList.remove('show'); // Remove show class from all cards
+                c.style.opacity = '0.5'; // Fade out unselected cards
+            });
+
+            // Highlight the selected card
+            card.classList.add('show'); // Show selected card
+            card.style.opacity = '1'; // Make selected card fully opaque
+        }
+
+        // Modal functionality
+        function openModal(img) {
+            const modal = document.getElementById("myModal");
+            const modalImg = document.getElementById("img01");
+            modal.style.display = "block";
+            modalImg.src = img.src; // Set the source of the modal image
+        }
+
+        function closeModal() {
+            const modal = document.getElementById("myModal");
+            modal.style.display = "none";
+        }
+    </script>
+</body>
+</html>
